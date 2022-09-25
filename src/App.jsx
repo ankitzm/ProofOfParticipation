@@ -6,7 +6,6 @@ import twitterLogo from "./assets/twitter-logo.svg"
 // Constants
 const TWITTER_HANDLE = 'ankitzm';
 const TWITTER_LINK = `https://twitter.com/${TWITTER_HANDLE}`;
-const OPENSEA_LINK = 'https://testnets.opensea.io/collection/wordnft-wv4ir0y1cw';
 
 const CONTRACT_ADDRESS = "0x60709F47a07404Ab46b663FaB486C6D55e7207eA"
 
@@ -14,6 +13,7 @@ const App = () => {
   // console.log(ABI.output.abi)
   
   const [currentAccount, setCurrentAccount] = useState("");
+  const [Address, setAddress] = useState("");
   
   const checkIfWalletIsConnected = async () => {
     const {ethereum} = window;
@@ -60,7 +60,11 @@ const App = () => {
 
       // Print public address
       console.log("Connected", accounts[0]);
-      setCurrentAccount(accounts[0]); 
+      setCurrentAccount(accounts[0]);
+
+      if(accounts[0] !== "0xB8b79891ABF6957641ab350eD74842878Cc06ff5") {
+        alert("Please connect with ADMIN account to continue, any of the functionality will not work with your account.")
+      }
       
     } catch (error) {
       console.log(error);
@@ -82,6 +86,7 @@ const App = () => {
 
   // Minting function
   const askContractToMintNFT = async() => {
+    if(Address.length > 40) {
       try {
       const { ethereum } = window;
 
@@ -89,7 +94,6 @@ const App = () => {
           const provider = new ethers.providers.Web3Provider(ethereum);
           const signer = provider.getSigner();
           const connectedContract = new ethers.Contract(CONTRACT_ADDRESS, ABI.output.abi, signer);
-      console.log("test1")
 
           console.log("Going to pop wallet now to pay gas...")
           let nftTxn = await connectedContract.mintNFT("0xB8b79891ABF6957641ab350eD74842878Cc06ff5");
@@ -113,6 +117,10 @@ const App = () => {
       } catch (error) {
           console.log(error)
       }
+    }
+    else {
+      alert("please put a valid address")
+    }
   }
 
   useEffect(() => {
@@ -123,15 +131,16 @@ const App = () => {
     <div className="App">
       <div className="container">
         <div className="header-container">
-          <p className="header gradient-text">〣 Word NFT </p>
+          <p className="header gradient-text">Engineer Hackathon </p>
           <p className="sub-text">
-            Each unique. Each beautiful. Discover your NFT today.
+            This is Proof-Of-Building NFT for Engineer Hackathon. <br />
+            Keep Building !!
           </p>
           {currentAccount === "" ? 
             renderNotConnectedContainer()
            : 
           <div>
-            <input type="text" id="address" />
+            <input type="text" id="address" className="cta-button" onInput={e => setAddress(e.target.value)} /> <br />
             <button onClick={askContractToMintNFT} className="cta-button connect-wallet-button">
               Mint NFT
             </button>
@@ -141,7 +150,8 @@ const App = () => {
         <div id="data">
           Mining ...
         </div>
-        <div id="opensea-link"> </div>
+        </div>
+        
         <div className="footer-container">
           <a
             className="footer-text"
@@ -154,7 +164,6 @@ const App = () => {
         </div>
       </div>
     </div>
-      </div>
   );
 };
 

@@ -1,12 +1,13 @@
 .App {
-  height: 100vh;
+  height: 98vh;
   overflow: none;
   text-align: center;
+  background-color: #ffffff;
+  font-family: 'Dangrek', cursive;
 }
 
 .container {
-  height: 100%;
-  background-color: #0d1116;
+  height: 95vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -25,7 +26,7 @@
 
 .sub-text {
   font-size: 25px;
-  color: white;
+  color: #2b2b2b;
 }
 
 .gradient-text {
@@ -70,6 +71,11 @@
   margin-right: 15px;
 }
 
+#address {
+  border: 1px solid #a3a3a3;
+  color: #595959;
+}
+
 .mint-count {
   color: white;
   font-size: 18px;
@@ -89,14 +95,14 @@
 }
 
 .footer-text {
-  color: white;
+  color: #0f0f0f;
   font-size: 16px;
   font-weight: bold;
 }
 
 #data {
   display:none;
-  color: white;
+  color: #0f0f0f;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -107,18 +113,6 @@
 
 #data a {
   color: #40bab8; 
-}
-
-#opensea-link {
-  color: white;
-  font-weight: 700;
-  font-size: 20px;
-  margin-top:15px;
-  margin-bottom: 15px;
-}
-
-#opensea-link a {
-  color: #4fbdd8; 
 }
 
 /* KeyFrames */
