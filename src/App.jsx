@@ -7,7 +7,7 @@ import twitterLogo from "./assets/twitter-logo.svg"
 const TWITTER_HANDLE = 'ankitzm';
 const TWITTER_LINK = `https://twitter.com/${TWITTER_HANDLE}`;
 
-const CONTRACT_ADDRESS = "0x60709F47a07404Ab46b663FaB486C6D55e7207eA"
+const CONTRACT_ADDRESS = "0x5547C16E81b782d626395fAAC1aEE47F93691CdA"
 
 const App = () => {
   // console.log(ABI.output.abi)
